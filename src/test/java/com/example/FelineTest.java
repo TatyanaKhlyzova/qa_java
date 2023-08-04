@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FelineTest {
     @Test
-    public void testEatMeatHerbivore() throws Exception{
+    public void eatMeatPutHerbivoreReceiveHerbivoreFood() throws Exception{
         Animal animal = new Animal();
         String animalKind = "Травоядное";
         List<String> expectedHerbivoreFood = new ArrayList<>();
@@ -17,7 +17,7 @@ public class FelineTest {
 
     }
     @Test
-    public void testEatMeatPredator() throws Exception{
+    public void eatMeatPutPredatorReceivePredatorFood() throws Exception{
         Animal animal = new Animal();
         String animalKind = "Хищник";
         List<String> expectedPredatorFood = new ArrayList<>();
@@ -29,27 +29,25 @@ public class FelineTest {
     }
 
     @Test
-    public void testEatMeatException() throws Exception{
+    public void eatMeatException() throws Exception{
         Animal animal = new Animal();
         String animalKindException = "любая строка";
         try{
             animal.getFood(animalKindException);
+            Assert.fail("У нас баг - исключение не работает");
         } catch(Exception exception) {
             String textException = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
             Assert.assertEquals(textException, exception.getMessage());
         }
-
-
-
     }
     @Test
-    public void testGetFamilyReceiveFeline() {
+    public void getFamilyReceiveFeline() {
         Feline feline = new Feline();
         String family = feline.getFamily();
         Assert.assertEquals("Кошачьи", family);
     }
     @Test
-    public void testGetKittensReceiveOne() {
+    public void getKittensReceiveOne() {
         Feline feline = new Feline();
         int kittens = feline.getKittens();
         Assert.assertEquals(1, kittens);

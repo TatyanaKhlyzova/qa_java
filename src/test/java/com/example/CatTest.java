@@ -9,14 +9,14 @@ import java.util.List;
 public class CatTest {
 
     @Test
-    public void testGetSoundReceiveMeow() {
+    public void getSoundReceiveMeow() {
         Feline feline = new Feline();
         Cat cat = new Cat(feline);
         String sound = cat.getSound();
         Assert.assertEquals("Мяу", sound);
     }
     @Test
-    public void testGetFoodReceivePredatorFood() throws Exception{
+    public void getFoodReceivePredatorFood() throws Exception{
         Feline feline = new Feline();
         Cat cat = new Cat(feline);
         List<String> felineFood = cat.getFood();

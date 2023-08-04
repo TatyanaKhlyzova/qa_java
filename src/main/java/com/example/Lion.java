@@ -1,8 +1,7 @@
 package com.example;
-
 import java.util.List;
 
-public class Lion extends Animal{
+public class Lion {
 
     boolean hasMane;
 
@@ -15,13 +14,13 @@ public class Lion extends Animal{
             throw new Exception("Используйте допустимые значения пола животного - самец или самка");
         }
     }
-
-    private Kittens kittens;
-    public Lion(Kittens kittens){
-        this.kittens = kittens;
+    Feline feline;
+    public Lion(Feline feline) {
+        this.feline = feline;
     }
-    public int getKittens(){
-        return kittens.getKittens();
+
+    public int getKittens() {
+        return feline.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -29,6 +28,7 @@ public class Lion extends Animal{
     }
 
     public List<String> getFood() throws Exception {
-        return getFood("Хищник");
+        return feline.getFood("Хищник");
     }
 }
+
