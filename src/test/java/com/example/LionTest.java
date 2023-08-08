@@ -16,7 +16,7 @@ public class LionTest {
     @Test
     public void hasManeException() throws Exception {
 
-        try { Lion lion = new Lion("любое другое значение, отличное от самец или самка");
+        try { Lion lion = new Lion("любое другое значение, отличное от самец или самка", feline);
             Assert.fail("У нас баг - исключение не работает");
         } catch(Exception exception){
             String expectedException = "Используйте допустимые значения пола животного - самец или самка";
@@ -27,7 +27,7 @@ public class LionTest {
     @Test
     public void getFoodReceivePredatorFood() throws Exception{
         Feline feline = new Feline();
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion("Самка", feline);
         Arrays Array = null;
         List expectedPredatorFood = new ArrayList<>(Array.asList("Животные", "Птицы", "Рыба"));
         Assert.assertEquals(expectedPredatorFood,lion.getFood());
@@ -36,8 +36,8 @@ public class LionTest {
     @Mock
     Feline feline;
     @Test
-    public void getKittensReceiveOne() {
-        Lion lion = new Lion (feline);
+    public void getKittensReceiveOne() throws Exception {
+        Lion lion = new Lion ("Самка", feline);
         Mockito.when(feline.getKittens()).thenReturn(1);
         int kittensLion = lion.getKittens();
         Assert.assertEquals(1, kittensLion);
@@ -45,7 +45,7 @@ public class LionTest {
 
     @Test
     public void shouldUseGetFood() throws Exception {
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion("Самец", feline);
         lion.getFood();
         Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
     }
